@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <title> The Acceleration of Gravity </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body style="background-color: #a5b6bd50">
+        <div class="container">
+            <h1 class="text-center text-primary"><strong>
+                    <!-- Name of practical. -->
+                    <span class="label label-info">The Acceleration of Gravity (g)</span>
+            <strong></h1><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-info ">
+                        <div class="panel-heading">
+                            <!-- Objective of practical. -->
+                            To measure (g) by measuring the period of oscillations of a simple pendulum.
+                        </div>
+                        <div class="panel-body text-center">
+                            <canvas id="myCanvas" width="520" height="390" style="border:1px solid #b1e2f550;">
+                                <!-- Practical sumulation in this canvas -->
+
+
+                            </canvas>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <!-- Getting time to table. -->
+                            <button id="btnTimeStart" class="btn btn-success">Start clock</button>
+                            <button class="btn btn-danger">End clock</button>
+                            <font size="4">Time period :</font>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 ">
+                    <div class="panel panel-success ">
+                        <!-- Data table here. -->
+                        <div class="panel-heading">Data Table</div>
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>l (cm)</th>
+                                    <th>t1 (s)</th>
+                                    <th>t2 (s)</th>
+                                    <th>t3 (s)</th>
+                                    <th>t-avg (s)</th>
+                                    <th>Oscills (N)</th>
+                                    <th>T (s)</th>
+                                    <th>T^2 (s)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <!-- Draw graph button. -->
+                            <button class="btn btn-warning" id="btnDrawGraph"  data-toggle="modal" data-target="#graHpModel">Draw grahp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Modal -->
+        <div id="graHpModel" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <!-- Name of grahp. -->
+                <h2 class="modal-title text-center"><span class="label label-success">The Acceleration of Gravity (g)</span></h2>
+                </div>
+                <div class="modal-body"  style="background-color: #a5b6bd2f">
+                    
+                    <div class="panel panel-info panel-body text-center">
+                        <canvas id="grahpCanvas" width="520" height="390" style="border:1px solid #b1e2f550;">
+                            <!-- Draw graph inside the canvas. -->
+                        </canvas>
+                    </div>
+                    
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Calculations</div>
+                        <div class="panel-body">
+                            <!-- Calculation data and final anwer here -->
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        
+            </div>
+        </div>
+    </body>
+</html>
