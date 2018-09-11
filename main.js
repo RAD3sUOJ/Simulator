@@ -3,6 +3,9 @@ var exphbs  = require('express-handlebars');
 var path = require('path');
 var fs = require('fs');
 var dbObj = require('./views/js/dbConfig.js');
+var bodyparser = require('body-parser');
+
+app.use(bodyparser());
 
 var app = express();
 var curUser = dbObj.user;

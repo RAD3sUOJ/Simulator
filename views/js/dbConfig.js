@@ -26,8 +26,6 @@ dbObj.loadAll = function loadAll(){
     return practicalData;
 }
 
-dbObj.user = function user(){
-	return userData;
-}
+module.exports = userData;
 
 module.exports = dbObj;
