@@ -6,7 +6,6 @@ mongoose.connect('mongodb://localhost:27017/simulator');
 var Schema = mongoose.Schema;
 
 var PracticalDataSchema = new Schema({
-    title : String,
 	name : String,
 	description : String,
 	url : String
