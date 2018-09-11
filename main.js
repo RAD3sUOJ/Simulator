@@ -2,6 +2,7 @@ var express = require('express');
 var exphbs  = require('express-handlebars');
 var path = require('path');
 var fs = require('fs');
+var homeObj = require('./views/js/homeCtl.js');
 
 var app = express();
 
@@ -16,6 +17,7 @@ app.set('view engine', 'handlebars');
 //Load home page as root
 app.get('/', function (req, res) {
     res.render('home');
+    console.log(homeObj.loadAll());
 });
 
 //Response for other pages
