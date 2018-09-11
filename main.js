@@ -2,10 +2,10 @@ var express = require('express');
 var exphbs  = require('express-handlebars');
 var path = require('path');
 var fs = require('fs');
-var mongoose = require('mongoose');
-var homeObj = require('./views/js/homeCtl.js');
+var dbObj = require('./views/js/dbConfig.js');
 
 var app = express();
+var practicalListData;
 
 //Create virtual directory for javascript, resources
 app.use('/js',express.static(__dirname+'/views/js'));
@@ -17,8 +17,9 @@ app.set('view engine', 'handlebars');
 
 //Load home page as root
 app.get('/', function (req, res) {
-    res.render('home');
-    console.log(homeObj.loadAll());
+    dbObj.loadAll().find().then(function(doc){
+        res.render('home',{practicals: doc});
+    });
 });
 
 //Response for other pages
@@ -34,5 +35,5 @@ app.get(/^(.+)/, function (req, res) {
 
 //Create server and set port and listen the port
 app.listen(4444,function(){
-    console.log("*** Server UP ***");
+    console.log("\n\n**** Server UP => http://localhost:4444/ ****");
 });

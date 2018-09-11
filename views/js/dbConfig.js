@@ -1,9 +1,9 @@
 var homeObj = {};       //for export functions
 
 var mongoose = require('mongoose');
-mongoose.connect("localhost:27017/simulator");
+mongoose.connect('mongodb://localhost:27017/simulator');
 
-var Schema = mongoose.schema;
+var Schema = mongoose.Schema;
 
 var PracticalDataSchema = new Schema({
     title : String,
@@ -15,9 +15,7 @@ var PracticalDataSchema = new Schema({
 var practicalData = mongoose.model('practicalData',PracticalDataSchema);
 
 homeObj.loadAll = function loadAll(){
-    practicalData.find().then(function(data){
-        return data;
-    });
+    return practicalData;
 }
 
 module.exports = homeObj;

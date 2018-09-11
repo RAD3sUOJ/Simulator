@@ -11,7 +11,7 @@
         <div class="container">
             <div class="text-center">
                     <h1><span class="label label-info">Physics practicle simulator</span><br></h1><br>
-            
+                <!--
                 <div class="col-md-3 panel" style="background-color:rgba(99, 178, 192, 0.692)">
                         <h3><span class="label label-primary">Title</span></h3><br>
 
@@ -20,17 +20,18 @@
                         <a href="#" class="list-group-item">About</a>
                     </div><br>
                 </div>
-
+                -->
 
                 <div class="col-md-4 panel" style="background-color:rgba(99, 163, 192, 0.692)">
                         <h3><span class="label label-primary">Practicle list</span></h3><br>
-
+                        {{#each practicals}}
                         <div class="list-group">
-                            <a href="#InternalResistanceOfBattery" class="list-group-item ">Internal Resistance of a Battery</a>
+                            <a href="/{{this.url}}">{{this.name}}</a>
                         </div><br>
+                        {{/each}}
                 </div>
 
-                <div class="col-md-5 panel" style="background-color:rgba(99, 192, 161, 0.692)">
+                <div class="col-md-7 col-sm-offset-1 panel" style="background-color:rgba(99, 192, 161, 0.692)">
                         <h3><span class="label label-primary">Description</span></h3><br>
 
                         <div class="well well-sm">
