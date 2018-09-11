@@ -26,7 +26,7 @@
                         <h3><span class="label label-primary">Practicle list</span></h3><br>
                         {{#each practicals}}
                         <div class="list-group">
-                            <a href="/{{this.url}}">{{this.name}}</a>
+                            <a description="{{description}}" url="{{url}}" onclick="ClickOnPracticalFunction(this)" class="list-group-item list-group-item-action">{{this.name}}</a>
                         </div><br>
                         {{/each}}
                 </div>
@@ -34,16 +34,25 @@
                 <div class="col-md-7 col-sm-offset-1 panel" style="background-color:rgba(99, 192, 161, 0.692)">
                         <h3><span class="label label-primary">Description</span></h3><br>
 
-                        <div class="well well-sm">
-                            type details here
-
-
+                        <div id="detailDiv" class="well well-sm">
                         </div>
 
-                        <button class="btn btn-success">Try with simulator</button><br><br>
+                        <button id="btnTrySimulator" onclick="redirects(this)" class="btn btn-success">Try with simulator</button><br><br>
                 </div>
-            
             </div>
         </div>
+        <script>
+            function ClickOnPracticalFunction(clicked){
+                document.getElementById("detailDiv").innerHTML = clicked.getAttribute("description");
+                document.getElementById("btnTrySimulator").setAttribute("url",clicked.getAttribute("url"));
+            }
+
+            function redirects(el){
+                var url = el.getAttribute("url");
+                url = "http://localhost:4444/"+url;
+                document.location.href = url;
+                //window.open (url);
+            }
+        </script>
     </body>
 </html>
