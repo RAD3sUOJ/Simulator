@@ -10,7 +10,9 @@
   },
   "author": "Chaminda Bandara <c771904768@gmail.com>",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "mongodb": "^3.1.4",
+    "mongoose": "^5.2.14"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"
