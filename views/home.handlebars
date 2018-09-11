@@ -35,6 +35,7 @@
                         <h3><span class="label label-primary">Description</span></h3><br>
 
                         <div id="detailDiv" class="well well-sm">
+                            Select a practical and try with simulator.
                         </div>
 
                         <button id="btnTrySimulator" onclick="redirects(this)" class="btn btn-success">Try with simulator</button><br><br>
@@ -49,7 +50,7 @@
 
             function redirects(el){
                 var url = el.getAttribute("url");
-                url = "http://localhost:4444/"+url;
+                url = "/"+url;
                 document.location.href = url;
                 //window.open (url);
             }
