@@ -5,7 +5,7 @@ var fs = require('fs');
 var dbObj = require('./views/js/dbConfig.js');
 
 var app = express();
-var practicalListData;
+var curUser = dbObj.user;
 
 //Create virtual directory for javascript, resources
 app.use('/js',express.static(__dirname+'/views/js'));
@@ -20,6 +20,11 @@ app.get('/', function (req, res) {
     dbObj.loadAll().find().then(function(doc){
         res.render('home',{practicals: doc});
     });
+});
+
+//login request
+app.post("/loginTest",function(req,res){
+    
 });
 
 //Response for other pages

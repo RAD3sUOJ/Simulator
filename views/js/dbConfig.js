@@ -1,4 +1,4 @@
-var homeObj = {};       //for export functions
+var dbObj = {};       //for export functions
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/simulator');
@@ -11,10 +11,23 @@ var PracticalDataSchema = new Schema({
 	url : String
 },{collection:'practicals'});
 
-var practicalData = mongoose.model('practicalData',PracticalDataSchema);
+var userDataSchema = new Schema({
+	username:{type:String, required:true},
+	fullname:String,
+	email:{type:String, required:true},
+	pass:{type:String, required:true},
+	profession:String
+})
 
-homeObj.loadAll = function loadAll(){
+var practicalData = mongoose.model('practicalData',PracticalDataSchema);
+var userData = mongoose.model('userData',userDataSchema);
+
+dbObj.loadAll = function loadAll(){
     return practicalData;
 }
 
-module.exports = homeObj;
+dbObj.user = function user(){
+	return userData;
+}
+
+module.exports = dbObj;

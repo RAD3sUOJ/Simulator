@@ -10,6 +10,7 @@
   },
   "author": "Chaminda Bandara <c771904768@gmail.com>",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "mongodb": "^3.1.4",
     "mongoose": "^5.2.14"
