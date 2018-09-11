@@ -3,9 +3,9 @@ var homeObj = {};       //for export functions
 var mongoose = require('mongoose');
 mongoose.connect("localhost:27017/simulator");
 
-var schema = mongoose.schema;
+var Schema = mongoose.schema;
 
-var PracticalDataSchema = new schema({
+var PracticalDataSchema = new Schema({
     title : String,
 	name : String,
 	description : String,

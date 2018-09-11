@@ -2,6 +2,7 @@ var express = require('express');
 var exphbs  = require('express-handlebars');
 var path = require('path');
 var fs = require('fs');
+var mongoose = require('mongoose');
 var homeObj = require('./views/js/homeCtl.js');
 
 var app = express();
