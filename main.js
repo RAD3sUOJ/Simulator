@@ -1,14 +1,17 @@
 var express = require('express');
+var app = express();
 var exphbs  = require('express-handlebars');
+var sessions = require('express-session');
 var path = require('path');
 var fs = require('fs');
 var dbObj = require('./views/js/dbConfig.js');
+var hdlObj = require('./views/js/handles.js');
 var bodyparser = require('body-parser');
 
+app.use(sessions({
+    secret:'rad3s'
+}));
 app.use(bodyparser());
-
-var app = express();
-var curUser = dbObj.user;
 
 //Create virtual directory for javascript, resources
 app.use('/js',express.static(__dirname+'/views/js'));
@@ -20,14 +23,22 @@ app.set('view engine', 'handlebars');
 
 //Load home page as root
 app.get('/', function (req, res) {
-    dbObj.loadAll().find().then(function(doc){
-        res.render('home',{practicals: doc});
-    });
+    hdlObj.hdlHome(req,res);
 });
+
+//logout request
+app.get('/logout',function(req,res){
+    req.session.destroy();
+    res.redirect('/');
+})
 
 //login request
 app.post("/loginTest",function(req,res){
-    
+    hdlObj.hdlLoginAction(req,res);
+});
+
+app.post("/regAction",function(req,res){
+    dbObj.saveUser(req,res);
 });
 
 //Response for other pages
