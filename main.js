@@ -5,7 +5,7 @@ var fs = require('fs');
 var dbObj = require('./views/js/dbConfig.js');
 var bodyparser = require('body-parser');
 
-app.use(bodyparser());
+//app.use(bodyparser());
 
 var app = express();
 var curUser = dbObj.user;
@@ -27,7 +27,7 @@ app.get('/', function (req, res) {
 
 //login request
 app.post("/loginTest",function(req,res){
-    
+
 });
 
 //Response for other pages
