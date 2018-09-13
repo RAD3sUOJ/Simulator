@@ -8,10 +8,12 @@ hdlObj.hdlHome = function hdlHome(req,res){
         var loged;
         var url;
         var email = "";
+        var display = "none";
         if(session.userId){
             loged = "Logout";
-            url = "/logout"
+            url = "/logout";
             email = session.userId;
+            display = session.display;
         }else{
             loged = "Login";
             url = "/login";
@@ -20,7 +22,8 @@ hdlObj.hdlHome = function hdlHome(req,res){
             practicals: doc,
             loged :loged,
             url:url,
-            email:email
+            email:email,
+            display:display,
         });
     });
 }
@@ -35,6 +38,7 @@ hdlObj.hdlLoginAction = function hdlLoginAction(req,res){
                 session.username = element.username;
                 session.fullname = element.fullname;
                 session.profession = element.profession;
+                session.display = "block";
                 valid = true;
             }
         });

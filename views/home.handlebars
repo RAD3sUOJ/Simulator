@@ -11,9 +11,12 @@
     <body>
         <div class="container">
             <div class="text-center">
-                    <div class="text-right"><h3>
-                        <label style="font-size:14px;color:darkcyan;">{{email}}</label>
-                        <a id="logSpn" href="{{url}}" class="label label-primary"><i class="glyphicon glyphicon-user"  style="font-size:20px;color:goldenrod;"></i> {{loged}}</a>
+                    <div class="row bg-info"><h3>
+                        <a id="logSpn" href="{{url}}" class="col-sm-2 label label-primary"><i class="glyphicon glyphicon-user"  style="font-size:20px;color:goldenrod;"></i> {{loged}}</a>
+                        <div class="" style="display:{{display}}">          <!-- this for loged only region -->
+                            <label class="col-sm-4 label label-basic text-left" style="font-size:16px;color:darkcyan;text-align:left">User ID: {{email}}</label>
+                            <a class=" col-sm-2" id="question" href="/question"><i class="glyphicon glyphicon-question-sign"  style="font-size:14px;color:darkblue;"></i> Questions</a>
+                        </div>
                     </h3></div>
                     <h1><span class="label label-info">Physics practicle simulator</span><br></h1><br>
                 <!--
