@@ -30,7 +30,11 @@ app.get('/', function (req, res) {
 app.get('/logout',function(req,res){
     req.session.destroy();
     res.redirect('/');
-})
+});
+
+app.get("/question",function(req,res){
+    res.send("question page");
+});
 
 //login request
 app.post("/loginTest",function(req,res){
