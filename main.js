@@ -33,7 +33,7 @@ app.get('/logout',function(req,res){
 });
 
 app.get("/question",function(req,res){
-    res.send("question page");
+    hdlObj.loadQuestionPage(req,res);
 });
 
 //login request
@@ -43,6 +43,14 @@ app.post("/loginTest",function(req,res){
 
 app.post("/regAction",function(req,res){
     dbObj.saveUser(req,res);
+});
+
+app.post("/saveQ",function(req,res){
+    dbObj.saveQuestion(req,res,session);
+});
+
+app.post("/saveA",function(req,res){
+    hdlObj.saveAns(req,res,session);
 });
 
 //Response for other pages

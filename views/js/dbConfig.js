@@ -19,11 +19,33 @@ var userDataSchema = new Schema({
 	profession:String
 },{collection:'userData'});
 
+var QuestionDataSchema = new Schema({
+	username:{type:String, required:true},
+	questionTxt:String,
+	answers:[
+		{
+			username:{type:String, required:true},
+			answerTxt:String
+		}
+	]
+},{collection:'questionData'});
+
+var CounterSchema = Schema({
+    _id: {type: String, required: true},
+    seq: { type: Number, default: 0 }
+},{collection:'counters'});
+
 var practicalData = mongoose.model('practicalData',PracticalDataSchema);
 var userData = mongoose.model('userData',userDataSchema);
+var questionData = mongoose.model('questionData',QuestionDataSchema);
+var counter = mongoose.model('counter', CounterSchema);
 
 dbObj.loadAll = function loadAll(){
     return practicalData;
+}
+
+dbObj.loadQuestionData = function loadQuestionData(){
+    return questionData;
 }
 
 dbObj.saveUser = function saveUser(req,res){
@@ -46,8 +68,31 @@ dbObj.saveUser = function saveUser(req,res){
 	});;
 }
 
+dbObj.saveQuestion = function saveQuestion(req,res,session){
+	if(req.body.questionTxt==""){
+		res.redirect("/question");
+		return;
+	}
+	var question = {
+		username:session.userId,
+		questionTxt:req.body.questionTxt,
+		answers:[
+		]
+	}
+	var data = new questionData(question);
+	data.save().then((result) => {
+		res.redirect("/question");
+	}).catch((err) => {
+		res.send(err);
+	});
+}
+
 dbObj.loadUsers = function loadUsers(){
     return userData;
+}
+
+dbObj.loadcounters = function loadcounters(){
+    return counter;
 }
 
 module.exports = dbObj;

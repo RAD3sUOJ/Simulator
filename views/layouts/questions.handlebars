@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <title> Questions </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="icon" type="image/ico" href="res/logo.png" />
+    </head>
+    <div>
+        <div>
+            <img src="../res/logo.png" style="width:20px; height:20px">
+            <a href="/">Home</a>
+        </div>
+    <body style="background-color: #a5b6bd50">
+        <div class="container" style="padding:5px">
+            <div class="row card text-center" style="border:10px">
+                <div class="col-md-6 bg-info"  style="padding:5px">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><span class="label label-info">Questions</span><br></h3>
+                            <form class="pull-right form-inline md-form form-sm active-cyan active-cyan-2">
+                                <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search by user ID" aria-label="Search">
+                                <button class="glyphicon glyphicon-search btn btn-basic" aria-hidden="true"></button>
+                            </form>
+                        </div>
+                        <div class="card-body">
+                        <p class="card-text">You can ask question here from other members.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {{#each qlist}}
+                            <li class="list-group-item text-left" onclick="selectQuestion(this)" username="{{this.username}}" qtxt="{{this.questionTxt}}" answers="[{{this.answers}}]">
+                                <span class="label label-info">{{this.username}}</span>
+                                {{this.questionTxt}}
+                                <span class="badge badge-pill badge-success"style="font-size:14px;background-color:darkgreen">
+                                <i class="glyphicon glyphicon-check"  style="font-size:14px;color:white;"></i> </span>
+                            </li>
+                            {{/each}}
+                        </ul>
+                        <form action="/saveQ" method="POST">
+                            <div class="card-footer text-left">
+                                <h3><span class="label label-info">New question:</span><br></h3>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="5" name="questionTxt" id="questionTxt"></textarea>
+                                    <button onclick="submitQ()" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6 bg-success"  style="padding:5px">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><span class="label label-info">Answers</span><br></h3>
+                        </div>
+                        <div class="card-body">
+                        <p class="card-text">Relative answers for selected question.</p>
+                        </div>
+                        <div id="answerSpace">
+                            <ul class="list-group list-group-flush">
+                                <li id="answerText" class="list-group-item text-left">
+                                    <span id="answerUserName" class="label label-success">userName</span>
+                                    The Sun will come back
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-footer text-left">
+                            <h3><span class="label label-info">Enter answer:</span><br></h3>
+                            <form action="/saveA" method="POST">
+                                <div id="" class="form-group">
+                                    <textarea name="answerTxt" class="form-control" rows="5" id="questionTxt"></textarea>
+                                    <input type="text" style="display: none" id="qTxt" name="qTxt" value="" >
+                                    <input type="text" style="display: none" id="username" name="username" value="" >
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function selectQuestion(element){
+                
+                document.getElementById("answerSpace").innerHTML = data;
+                document.getElementById("qTxt").setAttribute("value",element.getAttribute("qtxt"));
+                document.getElementById("username").setAttribute("value",element.getAttribute("username"));
+
+            }
+        </script>
+    </body>
+</html>
