@@ -66,5 +66,5 @@ app.get(/^(.+)/, function (req, res) {
 
 //Create server and set port and listen the port
 app.listen(4444,function(){
-    console.log("\n\n**** Server UP => http://localhost:4444/ ****");
+    console.log("\n\n**** Server started at "+new Date().toLocaleTimeString()+" => http://localhost:4444/ ****");
 });
