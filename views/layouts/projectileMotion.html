@@ -1,0 +1,243 @@
+<html>
+    <head>
+        <title> Simulation </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body style="background-color: #a5b6bd50">
+        <div class="container">
+            <h1 class="text-center text-primary"><strong>
+                    <!-- Name of practical. -->
+                    <span class="label label-info">Projectile Motion</span>
+            <strong></h1><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-info ">
+                        <div class="panel-heading">
+                            <!-- Objective of practical. -->
+                        </div>
+                        <div class="panel-body text-center">
+                            <canvas id="myCanvas" width="520" height="390" style="border:1px solid #b1e2f550;">
+                                <!-- Practical sumulation in this canvas -->
+
+
+                            </canvas>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <!-- Getting time to table. -->
+                            <button id="submit" class="btn btn-success" style="width:125" type="submit" onclick="graph()">Submit</button>
+                            <button class="btn btn-danger" style="width:125" onclick="clr()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 ">
+                    <div class="panel panel-success ">
+                        <!-- Data table here. -->
+                        <div class="panel-heading">INPUT</div>
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Velocity (m/s)</th>
+                                    <th>Angle (theta)</th>
+                                    <th>Height (m)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th><input type="text" value="40" name="velocity" id="velo" class="form-control"></th>
+                                    <th><input type="text" value="45" name="ghj" id="ang" class="form-control"></th>
+                                    <th><input type="text" value="10" name="hjk" id="hei" class="form-control"></th>
+                                </tr>
+                                </tbody>
+                            </table>
+                          
+                        </div>
+                        <div class="panel-footer text-center">
+                            <!-- Draw graph button. -->
+                            
+                        </div>
+                    </div>
+                </div>
+           
+<br>
+ <div class="col-md-6 ">
+                    <div class="panel panel-success ">
+                        <!-- Data table here. -->
+                        <div class="panel-heading">OUTPUT</div>
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Time Of Flight (sec)</th>
+                                    <th>Max Height (m)</th>
+                                    <th>Max Distance (m)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                 <th><input type="text" name="velocity" id="asd" class="form-control" readonly=""></th>
+                                 <th><input type="text" name="velocity" id="asdf" class="form-control" readonly=""></th>
+                                <th><input type="text" name="velocity" id="asdfg" class="form-control" readonly=""></th>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <!-- Draw graph button. -->
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- Modal -->
+        <div id="graHpModel" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <!-- Name of grahp. -->
+                <h2 class="modal-title text-center"><span class="label label-success">The Acceleration of Gravity (g)</span></h2>
+                </div>
+                <div class="modal-body"  style="background-color: #a5b6bd2f">
+                    
+                    <div class="panel panel-info panel-body text-center">
+                        <canvas id="grahpCanvas" width="520" height="390" style="border:1px solid #b1e2f550;">
+                            <!-- Draw graph inside the canvas. -->
+                        </canvas>
+                    </div>
+                    
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Calculations</div>
+                        <div class="panel-body">
+                            <!-- Calculation data and final anwer here -->
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        
+            </div>
+        </div>
+    <script type="text/javascript">
+  function graph() {
+var ve=document.getElementById('velo').value;
+var sams=document.getElementById('ang').value;
+var h=document.getElementById('hei').value;
+
+var an=(sams* Math.PI)/180;
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var j=0;
+var time=Math.abs((2*ve*Math.sin(an))/10);
+//alert(time);
+
+var de=(Math.pow(ve,2)*Math.sin(2*an))/10;
+var al=Math.pow((ve*Math.sin(an)),2)+20*h;
+var dr=(ve*Math.cos(an)*(ve*Math.sin(an))+Math.sqrt(al))/10;
+var height=(Math.pow(ve*Math.sin(an),2))/20;
+var count = 0;
+var nmk=((ve*Math.sin(an))+Math.sqrt(al))/10;
+
+    document.getElementById("asd").value =Math.round(time);
+    document.getElementById("asdf").value =Math.round(height);
+    if(h > 0){
+        while(j<nmk){
+
+var x=2*(Math.abs(ve*Math.cos(an)*j));
+var y=2*(Math.abs(ve*Math.sin(an)*j)-(5*Math.pow(j,2)));
+ setInterval(ctx.fillRect(x,390-h-y,0.5,0.5), 2000);
+
+ctx.fillStyle = 'blue';
+ctx.fill();
+
+if(count == 50){
+ctx.beginPath();
+ctx.arc(x, 390-h-y, 2, 0, 2 * Math.PI);
+ctx.fillStyle = 'green';
+ctx.fill();
+ctx.stroke();
+}
+count++;
+if(count == 51){
+count = 0;
+}
+j=j+0.01;
+}
+var x2=0;
+var klj=2*(Math.abs(ve*Math.sin(an)*j)-(5*Math.pow(j,2)));
+
+var po=0;
+
+while(po < 100)
+{
+
+ctx.fillRect(po,390-h,1,1);
+ctx.fillRect(0,390-h-po,1,1);
+ctx.fillRect(0,390-h+po,30,3);
+ctx.fillStyle = 'lightgray';
+ctx.fill();
+po++;
+}
+
+    document.getElementById("asdfg").value =Math.round(dr);
+    document.getElementById("asd").value =Math.round(nmk);
+}
+else{ while(j<time){
+
+var x=2*(Math.abs(ve*Math.cos(an)*j));
+var y=2*(Math.abs(ve*Math.sin(an)*j)-(5*Math.pow(j,2)));
+
+ctx.fillRect(x,390-h-y,0.5,0.5);
+ctx.fillStyle = 'blue';
+ctx.fill();
+
+if(count == 50){
+ctx.beginPath();
+ctx.arc(x, 390-h-y, 2, 0, 2 * Math.PI);
+ctx.fillStyle = 'green';
+ctx.fill();
+ctx.stroke();
+}
+count++;
+if(count == 51){
+count = 0;
+}
+j=j+0.01;
+}
+
+
+    document.getElementById("asdfg").value =Math.round(de);}
+} 
+
+function clr() {
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+ctx.clearRect(0, 0, 520, 390);
+ document.getElementById("asd").value =0;
+  document.getElementById("asdfg").value =0;
+   document.getElementById("asdf").value =0;
+    document.getElementById("velo").value =0;
+     document.getElementById("ang").value =0;
+      document.getElementById("hei").value =0;
+} 
+
+</script>
+</body>
+</html>
