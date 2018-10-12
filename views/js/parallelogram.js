@@ -37,7 +37,7 @@ Example.constraints = function() {
 
     // add stiff multi-body constraint
     var bodyA = Bodies.polygon(125, 80, 1, 20);//fixed point one
-    var bodyB = Bodies.polygon(106, 280, 1, 20);//mass one
+    var bodyB = Bodies.polygon(106, 280, 4, 20);//mass one
 
     bodyA.isStatic = true;
     var mass1 = 100;
@@ -55,7 +55,7 @@ Example.constraints = function() {
 
     // add stiff multi-body constraint
     var bodyA = Bodies.polygon(375, 80, 1, 20);//fixed point 2
-    var bodyB = Bodies.polygon(394, 280, 1, 20);//mass two
+    var bodyB = Bodies.polygon(394, 280, 4, 20);//mass two
 
     bodyA.isStatic = true;
     var mass2 = 100;
@@ -66,7 +66,7 @@ Example.constraints = function() {
         pointA: { x: 19, y: 0 },
         bodyB: bodyB,
         pointB: { x: 0, y: 0 },
-        stiffness: 0.6
+        stiffness: 0.1
     });
 
     World.add(world, [bodyA, bodyB, constraint]);
@@ -79,14 +79,14 @@ Example.constraints = function() {
         pointA: { x: -14, y: -14 },
         bodyB: bodyB,
         pointB: { x: 0, y: 0 },
-        stiffness: 0.6
+        stiffness: 0.1
     });
 
     World.add(world, [bodyB, constraint]);
 
-    var bodyA = Bodies.polygon(125, 80, 1, 20);//unknown mass
+    var bodyA = Bodies.polygon(125, 80, 1, 20);//mass2 called again
     bodyA.isStatic = true;
-    var mass3 = mass1;
+    var mass3 = ((mass1+mass2)/4)*3;
     bodyA.mass = mass3;
 
     var constraint = Constraint.create({
@@ -99,8 +99,7 @@ Example.constraints = function() {
 
     World.add(world, [constraint]);
 
-    var bodyA = Bodies.polygon(250, 330, 1, 20);//fixed point one called again
-    bodyA.label = "W2";
+    var bodyA = Bodies.polygon(250, 330, 4, 20);//unknown mass
 
     var constraint = Constraint.create({
         bodyA: bodyA,
@@ -140,10 +139,12 @@ Example.constraints = function() {
     render.mouse = mouse;
 
     // fit the render viewport to the scene
+    /*
     Render.lookAt(render, {
         min: { x: 0, y: 0 },
         max: { x: 800, y: 600 }
     });
+    */
 
     // context for MatterTools.Demo
     return {

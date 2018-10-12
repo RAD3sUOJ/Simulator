@@ -10,6 +10,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script language="javascript" type="text/javascript" src="../js/matter.js"></script>
         <script language="javascript" type="text/javascript" src="../js/parallelogram.js"></script>
+        <script language="javascript" type="text/javascript" src="../js/BIRpar.js"></script>
         <link rel="icon" type="image/ico" href="res/logo.png" />
     </head>
     <body style="background-color: #a5b6bd50">
@@ -20,7 +21,7 @@
         <div class="container">
             <h1 class="text-center text-primary"><strong>
                     <!-- Name of practical. -->
-                    <span class="label label-info">Measuring the weight of an unknown mass using parallelogram law</span>
+                    <span class="label label-info">Measuring the mass of an unknown object using parallelogram law</span>
             <strong></h1><br>
             <div class="row">
                 <div class="col-md-6">
@@ -35,11 +36,12 @@
                           </script>
                         </div>
                         <div class="panel-footer text-center">
-                            <label>Mass one</label><input type="text" size="5" id="mass1"/>
-                            <label>Mass two</label><input type="text" size="5" id="mass2"/>
-                            <label>Unknown Mass</label><input type="text" size="5" id="mass3"/>
+                            <label>Mass one</label><input id="mass1" type="text" size="5" />
+                            <label>Mass two</label><input id="mass2" type="text" size="5" />
+                            <label>Unknown Mass</label><input size="5" id="mass3" readonly/>
+                            <br>
                             <!-- Getting time to table. -->
-                            <br><button id="btnRecord" class="btn btn-success">Record</button>
+                            <button id="btnRecordPar" class="btn btn-success">Record</button>
                         </div>
                     </div>
                 </div>
@@ -116,7 +118,7 @@
 
             </div>
         </div>
-        <script src="js/BIR.js"></script>
-        <script src="js/Chart.min.js"></script>
+        <script src="../js/BIRpar.js"></script>
+        <script src="../js/Chart.min.js"></script>
     </body>
 </html>
