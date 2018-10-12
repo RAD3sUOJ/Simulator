@@ -58,7 +58,7 @@
                         <p class="card-text">Relative answers for selected question.</p>
                         </div>
                         <div id="answerSpace">
-                            <ul class="list-group list-group-flush">
+                            <ul name="ansList" class="list-group list-group-flush">
                                 <li id="answerText" class="list-group-item text-left">
                                     <span id="answerUserName" class="label label-success">userName</span>
                                     The Sun will come back
@@ -72,7 +72,7 @@
                                     <textarea name="answerTxt" class="form-control" rows="5" id="questionTxt"></textarea>
                                     <input type="text" style="display: none" id="qTxt" name="qTxt" value="" >
                                     <input type="text" style="display: none" id="username" name="username" value="" >
-                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button id="btnAnsSubmit" type="submit" class="btn btn-success">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -81,9 +81,26 @@
             </div>
         </div>
         <script>
+            var qObj={}
+            var anslist=document.getElementsByName("ansList");
+
             function selectQuestion(element){
-                
-                document.getElementById("answerSpace").innerHTML = data;
+
+                qObj={
+                    username:element.getAttribute("username"),
+                    questionTxt:element.getAttribute("qtxt"),
+                    answers:element.getAttribute("answers")
+                }
+
+                qObj.answers.forEach(printAns);
+
+                function printAns(item, index) {
+                    anslist.innerHTML +="<li id='answerText' class='list-group-item text-left'>"; 
+                    anslist.innerHTML +="<span id='"+item.username+"' class='label label-success'>userName</span>"+item.questionTxt+"</li>"; 
+                }
+
+                console.log(qObj);
+                //document.getElementById("answerSpace").innerHTML = data;
                 document.getElementById("qTxt").setAttribute("value",element.getAttribute("qtxt"));
                 document.getElementById("username").setAttribute("value",element.getAttribute("username"));
 

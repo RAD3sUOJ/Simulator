@@ -11,7 +11,7 @@ var bodyparser = require('body-parser');
 app.use(sessions({
     secret:'rad3s'
 }));
-app.use(bodyparser());
+app.use(bodyparser()); 
 
 //Create virtual directory for javascript, resources
 app.use('/js',express.static(__dirname+'/views/js'));
