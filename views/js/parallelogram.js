@@ -24,7 +24,7 @@ Example.constraints = function() {
             width: 520,
             height: 390,
             showAngleIndicator: false,
-            background: '#fafafa'
+            background: '#000000'
         }
     });
 
@@ -36,64 +36,70 @@ Example.constraints = function() {
 
 
     // add stiff multi-body constraint
-    var bodyA = Bodies.polygon(125, 80, 1, 20);
-    var bodyB = Bodies.polygon(106, 280, 1, 20);
+    var bodyA = Bodies.polygon(125, 80, 1, 20);//fixed point one
+    var bodyB = Bodies.polygon(106, 280, 1, 20);//mass one
 
     bodyA.isStatic = true;
+    var mass1 = 100;
+    bodyA.mass = mass1;
 
     var constraint = Constraint.create({
         bodyA: bodyA,
         pointA: { x: -19, y: 0 },
         bodyB: bodyB,
         pointB: { x: 0, y: 0 },
-        stiffness: 0.8
+        stiffness: 0.6
     });
 
     World.add(world, [bodyA, bodyB, constraint]);
 
     // add stiff multi-body constraint
-    var bodyA = Bodies.polygon(375, 80, 1, 20);
-    var bodyB = Bodies.polygon(394, 280, 1, 20);
+    var bodyA = Bodies.polygon(375, 80, 1, 20);//fixed point 2
+    var bodyB = Bodies.polygon(394, 280, 1, 20);//mass two
 
     bodyA.isStatic = true;
+    var mass2 = 100;
+    bodyA.mass = mass2;
 
     var constraint = Constraint.create({
         bodyA: bodyA,
         pointA: { x: 19, y: 0 },
         bodyB: bodyB,
         pointB: { x: 0, y: 0 },
-        stiffness: 0.8
+        stiffness: 0.6
     });
 
     World.add(world, [bodyA, bodyB, constraint]);
 
-    var bodyB = Bodies.polygon(250, 180, 1, 5);
-    bodyB.isStatic = true;
+    var bodyB = Bodies.polygon(250, 180, 1, 2);//fixed point in the middle
+    bodyB.isStatic = false;
 
     var constraint = Constraint.create({
         bodyA: bodyA,
         pointA: { x: -14, y: -14 },
         bodyB: bodyB,
         pointB: { x: 0, y: 0 },
-        stiffness: 0.8
+        stiffness: 0.6
     });
 
     World.add(world, [bodyB, constraint]);
 
-    var bodyA = Bodies.polygon(125, 80, 1, 20);
+    var bodyA = Bodies.polygon(125, 80, 1, 20);//unknown mass
     bodyA.isStatic = true;
+    var mass3 = mass1;
+    bodyA.mass = mass3;
 
     var constraint = Constraint.create({
         bodyA: bodyA,
         pointA: { x: 14, y: -14 },
         bodyB: bodyB,
         pointB: { x: 0, y: 0 },
-        stiffness: 0.8
+        stiffness: 0.1
     });
 
     World.add(world, [constraint]);
 
-    var bodyA = Bodies.polygon(250, 330, 1, 20);
+    var bodyA = Bodies.polygon(250, 330, 1, 20);//fixed point one called again
     bodyA.label = "W2";
 
     var constraint = Constraint.create({
@@ -101,7 +107,7 @@ Example.constraints = function() {
         pointA: { x: 0, y: 0 },
         bodyB: bodyB,
         pointB: { x: 0, y: 0 },
-        stiffness: 0.8
+        stiffness: 0.1
     });
 
     World.add(world, [constraint, bodyA]);
