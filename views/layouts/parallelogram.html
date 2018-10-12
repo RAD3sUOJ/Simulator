@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> Parallelogram Law </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script language="javascript" type="text/javascript" src="../js/matter.js"></script>
+        <script language="javascript" type="text/javascript" src="../js/parallelogram.js"></script>
+        <link rel="icon" type="image/ico" href="res/logo.png" />
+    </head>
+    <body style="background-color: #a5b6bd50">
+            <div>
+                    <img src="../res/logo.png" style="width:20px; height:20px">
+                    <a href="/">Home</a>
+                </div>
+        <div class="container">
+            <h1 class="text-center text-primary"><strong>
+                    <!-- Name of practical. -->
+                    <span class="label label-info">Measuring the weight of an unknown mass using parallelogram law</span>
+            <strong></h1><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-info ">
+                        <div class="panel-heading">
+                            <!-- Objective of practical. -->
+                            To measure the mass of an unknown object
+                        </div>
+                        <div id="canid" class="panel-body text-center" style="border:1px solid #b1e2f550;">
+                          <script>
+                          Example.constraints();
+                          </script>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <label>Mass one</label><input type="text" size="5" id="mass1"/>
+                            <label>Mass two</label><input type="text" size="5" id="mass2"/>
+                            <label>Unknown Mass</label><input type="text" size="5" id="mass3"/>
+                            <!-- Getting time to table. -->
+                            <br><button id="btnRecord" class="btn btn-success">Record</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 ">
+                    <div class="panel panel-success ">
+                        <!-- Data table here. -->
+                        <div class="panel-heading">Data Table</div>
+                        <div class="panel-body">
+                            <table id="dataTbl" class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Mass of A(kg)</th>
+                                    <th>Mass of B(kg)</th>
+                                    <th>Mass of C(kg)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <!-- Draw graph button. -->
+                            <button class="btn btn-warning" id="btnDrawGraph"  data-toggle="modal" data-target="#graphModel">Draw graph</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Modal -->
+        <div id="graphModel" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <!-- Name of grahp. -->
+                <h2 class="modal-title text-center"><span class="label label-success">Battery Internal Resistance</span></h2>
+                </div>
+                <div class="modal-body"  style="background-color: #a5b6bd2f">
+
+                    <div class="panel panel-info panel-body text-center">
+                        <canvas id="grahpCanvas" width="520" height="390" style="border:1px solid #b1e2f550;">
+                            <!-- Draw graph inside the canvas. -->
+                        </canvas>
+                    </div>
+
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Calculations</div>
+                        <div class="panel-body">
+                            <!-- Calculation data and final anwer here -->
+                            <p class="lead">
+                                E = V + Ir<br>
+                                V = -Ir + E <br>
+                                V = -rI + E <br><br>
+
+                                Gradient is : -r<br>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+            </div>
+        </div>
+        <script src="js/BIR.js"></script>
+        <script src="js/Chart.min.js"></script>
+    </body>
+</html>
