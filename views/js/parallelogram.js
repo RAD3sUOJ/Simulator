@@ -18,12 +18,13 @@ Example.constraints = function() {
 
     // create renderer
     var render = Render.create({
-        element: document.body,
+        element: document.getElementById("canid"),
         engine: engine,
         options: {
-            width: 600,
-            height: 400,
-            showAngleIndicator: false
+            width: 520,
+            height: 390,
+            showAngleIndicator: false,
+            background: '#fafafa'
         }
     });
 
@@ -35,8 +36,8 @@ Example.constraints = function() {
 
 
     // add stiff multi-body constraint
-    var bodyA = Bodies.polygon(175, 100, 1, 20);
-    var bodyB = Bodies.polygon(156, 300, 1, 20);
+    var bodyA = Bodies.polygon(125, 80, 1, 20);
+    var bodyB = Bodies.polygon(106, 280, 1, 20);
 
     bodyA.isStatic = true;
 
@@ -51,8 +52,8 @@ Example.constraints = function() {
     World.add(world, [bodyA, bodyB, constraint]);
 
     // add stiff multi-body constraint
-    var bodyA = Bodies.polygon(425, 100, 1, 20);
-    var bodyB = Bodies.polygon(444, 300, 1, 20);
+    var bodyA = Bodies.polygon(375, 80, 1, 20);
+    var bodyB = Bodies.polygon(394, 280, 1, 20);
 
     bodyA.isStatic = true;
 
@@ -66,7 +67,7 @@ Example.constraints = function() {
 
     World.add(world, [bodyA, bodyB, constraint]);
 
-    var bodyB = Bodies.polygon(300, 200, 1, 5);
+    var bodyB = Bodies.polygon(250, 180, 1, 5);
     bodyB.isStatic = true;
 
     var constraint = Constraint.create({
@@ -79,7 +80,7 @@ Example.constraints = function() {
 
     World.add(world, [bodyB, constraint]);
 
-    var bodyA = Bodies.polygon(175, 100, 1, 20);
+    var bodyA = Bodies.polygon(125, 80, 1, 20);
     bodyA.isStatic = true;
 
     var constraint = Constraint.create({
@@ -92,7 +93,7 @@ Example.constraints = function() {
 
     World.add(world, [constraint]);
 
-    var bodyA = Bodies.polygon(300, 350, 1, 20);
+    var bodyA = Bodies.polygon(250, 330, 1, 20);
     bodyA.label = "W2";
 
     var constraint = Constraint.create({
